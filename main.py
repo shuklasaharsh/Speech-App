@@ -108,12 +108,12 @@ Builder.load_string("""
                 on_press: app.SpeechToText()
                 background_normal: ''
                 background_color: 0.33,0.019,0.019,1
-            Image:
-                source:"./clicktalk.png"
-                size:self.parent.size
-                stretch: True
-                background_color:(0.33,0.019,0.019,1)
-                allow_stretch:True
+                Image:
+                    source:"./clicktalk.png"
+                    size:self.parent.size
+                    stretch: True
+                    background_color:(0.33,0.019,0.019,1)
+                    allow_stretch:True
                 Button:
                     text: 'Back to menu'
                     on_press: root.manager.current = 'menu'
