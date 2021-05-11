@@ -15,7 +15,7 @@ from kivy.uix.popup import Popup
 import azure.cognitiveservices.speech as speechsdk
 start=False
 r=sr.Recognizer()
-m=sr.Microphone()
+# m=sr.Microphone()
 sm = ScreenManager()
 e1=pyttsx3.init()
 text=StringProperty()
@@ -23,79 +23,79 @@ import subprocess
 import winsound
 #TextInput height width
 Builder.load_string("""
-    <MenuScreen>:
-        GridLayout:
-            cols:2
-            rows:2
-            Label:
-                text: "TalkToMe"
-                canvas.before:
-                    Color:
-                        rgba:1.0,0.963,0.462,1
-                        Rectangle:
-                            pos:self.pos
-                            size:self.size
-                            font_size: 25
-                            height: 200
-                            width: 100
-                            Image:
-                                source:"./Back.png"
-                                center_x:self.parent.center_x
-                                center_y:self.parent.center_y
-                                size_hint_x: None
-                                size_hint_y: None
-                                height: dp(800)
-                                width: dp(400)
-                                background_color:(255.0,255.0,255.0,0)
-                                allow_stretch:True
-            
-            GridLayout
-            rows:4
-            Button:
-                text: 'Hear'
-                on_press: root.manager.current = 'hear'
-                background_normal: ''
-                background_color: 0.33,0.019,0.019,1
-                Image:
-                    source:"./speak.png"
-                    center_x:self.parent.center_x
-                    center_y:self.parent.center_y
-                    background_color:(0.33,0.019,0.019,1)
-                    allow_stretch:True
-                    Button:
-                        text: 'Talk'
-                        on_press: root.manager.current = 'talk'
-                        background_normal: ''
-                        background_color: 0.33,0.019,0.019,1
+<MenuScreen>:
+    GridLayout:
+        cols:2
+        rows:2
+        Label:
+            text: "TalkToMe"
+            canvas.before:
+                Color:
+                    rgba:1.0,0.963,0.462,1
+                    Rectangle:
+                        pos:self.pos
+                        size:self.size
+                        font_size: 25
+                        height: 200
+                        width: 100
                         Image:
-                            source:"./listen.png"
+                            source:"./Back.png"
                             center_x:self.parent.center_x
                             center_y:self.parent.center_y
-                            background_color:(0.33,0.019,0.019,1)
+                            size_hint_x: None
+                            size_hint_y: None
+                            height: dp(800)
+                            width: dp(400)
+                            background_color:(255.0,255.0,255.0,0)
                             allow_stretch:True
-                            Button:
-                                text: 'Alarm'
-                                on_press: app.alarm()
-                                background_normal: ''
-                                background_color: 0.33,0.019,0.019,1
-                                Image:
-                                    source:"./alarm.png"
-                                    center_x:self.parent.center_x
-                                    center_y:self.parent.center_y
-                                    background_color:(0.33,0.019,0.019,1)
-                                    allow_stretch:True
-                                    Button:
-                                        text:'Take notes'
-                                        on_press:root.manager.current='notes'
-                                        background_normal: ''
-                                        background_color: 0.33,0.019,0.019,1
-                                        Image:
-                                            source:"./takenotes.png"
-                                            center_x:self.parent.center_x
-                                            center_y:self.parent.center_y
-                                            background_color:(0.33,0.019,0.019,1)
-                                            allow_stretch:True
-                                            
+            
+    GridLayout:
+        rows:4
+        Button:
+            text: 'Hear'
+            on_press: root.manager.current = 'hear'
+            background_normal: ''
+            background_color: 0.33,0.019,0.019,1
+            Image:
+                source:"./speak.png"
+                center_x:self.parent.center_x
+                center_y:self.parent.center_y
+                background_color:(0.33,0.019,0.019,1)
+                allow_stretch:True
+                Button:
+                    text: 'Talk'
+                    on_press: root.manager.current = 'talk'
+                    background_normal: ''
+                    background_color: 0.33,0.019,0.019,1
+                    Image:
+                        source:"./listen.png"
+                        center_x:self.parent.center_x
+                        center_y:self.parent.center_y
+                        background_color:(0.33,0.019,0.019,1)
+                        allow_stretch:True
+                        Button:
+                            text: 'Alarm'
+                            on_press: app.alarm()
+                            background_normal: ''
+                            background_color: 0.33,0.019,0.019,1
+                            Image:
+                                source:"./alarm.png"
+                                center_x:self.parent.center_x
+                                center_y:self.parent.center_y
+                                background_color:(0.33,0.019,0.019,1)
+                                allow_stretch:True
+                                Button:
+                                    text:'Take notes'
+                                    on_press:root.manager.current='notes'
+                                    background_normal: ''
+                                    background_color: 0.33,0.019,0.019,1
+                                    Image:
+                                        source:"./takenotes.png"
+                                        center_x:self.parent.center_x
+                                        center_y:self.parent.center_y
+                                        background_color:(0.33,0.019,0.019,1)
+                                        allow_stretch:True
+                                    
 <HearScreen>:
     BoxLayout:
         orientation:'vertical'
