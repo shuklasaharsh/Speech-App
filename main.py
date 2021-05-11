@@ -99,15 +99,15 @@ Builder.load_string("""
 <HearScreen>:
     BoxLayout:
         orientation:'vertical'
-        BoxLayout
-        orientation:'horizontal'
-        Button:
-            text: 'Click here to talk'
-            font:'Belgrano'
-            font_size:25
-            on_press: app.SpeechToText()
-            background_normal: ''
-            background_color: 0.33,0.019,0.019,1
+        BoxLayout:
+            orientation:'horizontal'
+            Button:
+                text: 'Click here to talk'
+                font:'Belgrano'
+                font_size:25
+                on_press: app.SpeechToText()
+                background_normal: ''
+                background_color: 0.33,0.019,0.019,1
             Image:
                 source:"./clicktalk.png"
                 size:self.parent.size
